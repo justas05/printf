@@ -20,7 +20,7 @@ int		print_p(t_specifier *s, va_list *ap, t_buf_info *bi)
 	unsigned long long	c;
 
 	c = (unsigned long long)va_arg(*ap, void*);
-	s->width -= ft_nbrlen_base(c, 16) + 2;
+	s->width -= (ft_nbrlen_base(c, 16) + 2);
 	if (!(s->flags & ZERO) && !(s->flags & MINUS) && s->width > 0)
 		ft_fill(bi, s->width, ' ');
 	ft_puts_buf(bi, "0x");
