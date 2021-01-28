@@ -16,7 +16,7 @@
 # include <stddef.h>
 
 int		ft_printf(const char *format, ...);
-int		ft_printf_fd(int fd, const char *format, ...);
+int		ft_dprintf(int fd, const char *format, ...);
 int		ft_sprintf(char *buf, const char *format, ...);
 int		ft_snprintf(char *buf, size_t size, const char *format, ...);
 

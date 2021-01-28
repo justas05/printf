@@ -21,10 +21,13 @@ int		ft_sprintf(char *buf, const char *fmt, ...)
 	va_list	ap;
 	int		len;
 
+	if (buf)
+		buf[0] = 0;
 	if (!buf || !ft_strcmp("%", fmt))
 		return (0);
 	va_start(ap, fmt);
-	len = ft_internal_snprintf(buf, -1, fmt, &ap);
+	len = ft_internal_snprintf(buf, (size_t)-1, fmt, &ap);
 	va_end(ap);
+	buf[len] = 0;
 	return (len);
 }

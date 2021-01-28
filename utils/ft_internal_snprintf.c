@@ -19,14 +19,19 @@
 int			ft_internal_snprintf(char *buf, size_t size,
 								const char *fmt, va_list *ap)
 {
-	int		len;
+	t_buf_info	bi;
 
-	(void)buf;
-	(void)size;
-	(void)fmt;
-	(void)ap;
-	if (!ft_strcmp("%", fmt))
-		return (0);
-	len = 0;
-	return (len);
+	bi.buf = buf;
+	bi.pos = 0;
+	bi.len = 0;
+	bi.fd = -1;
+	bi.buf_size = size;
+	while (*fmt)
+	{
+		if (*fmt == '%')
+			parse_specificator(&fmt, ap, &bi);
+		else
+			ft_putc_buf(&bi, *fmt++);
+	}
+	return (bi.pos);
 }

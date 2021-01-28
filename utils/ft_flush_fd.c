@@ -16,7 +16,10 @@
 
 void		ft_flush_fd(int fd, t_buf_info *bi)
 {
-	write(fd, bi->buf, bi->pos);
-	bi->len += bi->pos;
-	bi->pos = 0;
+	if (fd >= 0)
+	{
+		write(fd, bi->buf, bi->pos);
+		bi->len += bi->pos;
+		bi->pos = 0;
+	}
 }
